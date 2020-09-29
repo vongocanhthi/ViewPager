@@ -4,9 +4,11 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.viewpager.widget.ViewPager;
 
 import android.content.Context;
+import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.ShapeDrawable;
 import android.graphics.drawable.shapes.OvalShape;
+import android.net.Uri;
 import android.os.Bundle;
 import android.os.Handler;
 import android.view.View;
@@ -50,7 +52,7 @@ public class MainActivity extends AppCompatActivity {
 
             @Override
             public void onPageSelected(int position) {
-
+                currentPage = position;
             }
 
             @Override
@@ -64,7 +66,10 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onItemClickListener(View view, int position) {
                 Toast.makeText(MainActivity.this, ""+position, Toast.LENGTH_SHORT).show();
-
+                if (position == 2){
+                    Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse("https://www.google.com/"));
+                    startActivity(intent);
+                }
             }
 
             @Override
@@ -93,7 +98,7 @@ public class MainActivity extends AppCompatActivity {
                     }
                 });
             }
-        }, 500, 3000);
+        }, 500, 4000);
     }
 
 
